@@ -19,11 +19,9 @@
     <!-- 支持mvc注解驱动 -->
     <mvc:annotation-driven />
 
-    <mvc:annotation-driven/>
-
     <!-- 配置静态文件过滤器 -->
-    <mvc:resources location="/assets/jquery-easyui-1.7.0/" mapping="/jquery-easyui-1.7.0/**"/>
-    <mvc:resources location="/assets/easyui/" mapping="/easyui/**"/>
+<!--    <mvc:resources location="/assets/jquery-easyui-1.7.0/" mapping="/assets/jquery-easyui-1.7.0/**"/>-->
+    <mvc:resources location="/assets/easyui/" mapping="/assets/easyui/**"/>
 
     <!-- 视图解析器 -->
     <bean
