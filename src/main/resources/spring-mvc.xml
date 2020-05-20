@@ -13,13 +13,23 @@
     <!-- 自动扫描包，实现支持注解的IOC -->
     <context:component-scan base-package="anlzou.com" />
 
-<!--      使用这个会拦截所有css、js  -->
-<!--  要放在  <mvc:annotation-driven />前面 -->
+<!--  要放在  <mvc:annotation-driven />前面，不然使用这个会拦截所有css、js -->
         <mvc:interceptors>
             <mvc:interceptor>
                 <!--/**表示所有url包括子url路径都进行拦截-->
                 <mvc:mapping path="/**"/>
                 <bean class="anlzou.com.inteceptor.LoginInteceptor"></bean>
+            </mvc:interceptor>
+
+            <mvc:interceptor>
+                <!--/**表示所有url包括子url路径都进行拦截-->
+                <mvc:mapping path="/**"/>
+                <bean class="anlzou.com.inteceptor.Inteceptor1"></bean>
+            </mvc:interceptor>
+            <mvc:interceptor>
+                <!--/**表示所有url包括子url路径都进行拦截-->
+                <mvc:mapping path="/**"/>
+                <bean class="anlzou.com.inteceptor.Inteceptor2"></bean>
             </mvc:interceptor>
         </mvc:interceptors>
 
