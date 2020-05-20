@@ -13,15 +13,26 @@
     <!-- 自动扫描包，实现支持注解的IOC -->
     <context:component-scan base-package="anlzou.com" />
 
+<!--      使用这个会拦截所有css、js  -->
+<!--  要放在  <mvc:annotation-driven />前面 -->
+        <mvc:interceptors>
+            <mvc:interceptor>
+                <!--/**表示所有url包括子url路径都进行拦截-->
+                <mvc:mapping path="/**"/>
+                <bean class="anlzou.com.inteceptor.LoginInteceptor"></bean>
+            </mvc:interceptor>
+        </mvc:interceptors>
+
     <!-- Spring MVC不处理静态资源 -->
     <mvc:default-servlet-handler />
 
     <!-- 支持mvc注解驱动 -->
     <mvc:annotation-driven />
-
     <!-- 配置静态文件过滤器 -->
-<!--    <mvc:resources location="/assets/jquery-easyui-1.7.0/" mapping="/assets/jquery-easyui-1.7.0/**"/>-->
-    <mvc:resources location="/assets/easyui/" mapping="/assets/easyui/**"/>
+    <!--  location="/assets/easyui/css/" mapping="/assets/easyui/css/**" 必须成对出现，**表示子目录下的所有文件  -->
+    <mvc:resources location="/assets/easyui/css/" mapping="/assets/easyui/css/**"/>
+    <mvc:resources location="/assets/easyui/js/" mapping="/assets/easyui/js/**"/>
+    <!-- <mvc:resources location="/assets/jquery-easyui-1.7.0/" mapping="/assets/jquery-easyui-1.7.0/**"/>-->
 
     <!-- 视图解析器 -->
     <bean
@@ -32,4 +43,5 @@
         <!-- 后缀 -->
         <property name="suffix" value=".jsp" />
     </bean>
+
 </beans>
