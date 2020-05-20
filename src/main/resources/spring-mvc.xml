@@ -14,24 +14,24 @@
     <context:component-scan base-package="anlzou.com" />
 
 <!--  要放在  <mvc:annotation-driven />前面，不然使用这个会拦截所有css、js -->
-        <mvc:interceptors>
-            <mvc:interceptor>
-                <!--/**表示所有url包括子url路径都进行拦截-->
-                <mvc:mapping path="/**"/>
-                <bean class="anlzou.com.inteceptor.LoginInteceptor"></bean>
-            </mvc:interceptor>
+<!--        <mvc:interceptors>-->
+<!--            <mvc:interceptor>-->
+<!--                &lt;!&ndash;/**表示所有url包括子url路径都进行拦截&ndash;&gt;-->
+<!--                <mvc:mapping path="/**"/>-->
+<!--                <bean class="anlzou.com.inteceptor.LoginInteceptor"></bean>-->
+<!--            </mvc:interceptor>-->
 
-            <mvc:interceptor>
-                <!--/**表示所有url包括子url路径都进行拦截-->
-                <mvc:mapping path="/**"/>
-                <bean class="anlzou.com.inteceptor.Inteceptor1"></bean>
-            </mvc:interceptor>
-            <mvc:interceptor>
-                <!--/**表示所有url包括子url路径都进行拦截-->
-                <mvc:mapping path="/**"/>
-                <bean class="anlzou.com.inteceptor.Inteceptor2"></bean>
-            </mvc:interceptor>
-        </mvc:interceptors>
+<!--            <mvc:interceptor>-->
+<!--                &lt;!&ndash;/**表示所有url包括子url路径都进行拦截&ndash;&gt;-->
+<!--                <mvc:mapping path="/**"/>-->
+<!--                <bean class="anlzou.com.inteceptor.Inteceptor1"></bean>-->
+<!--            </mvc:interceptor>-->
+<!--            <mvc:interceptor>-->
+<!--                &lt;!&ndash;/**表示所有url包括子url路径都进行拦截&ndash;&gt;-->
+<!--                <mvc:mapping path="/**"/>-->
+<!--                <bean class="anlzou.com.inteceptor.Inteceptor2"></bean>-->
+<!--            </mvc:interceptor>-->
+<!--        </mvc:interceptors>-->
 
     <!-- Spring MVC不处理静态资源 -->
     <mvc:default-servlet-handler />
@@ -52,6 +52,13 @@
         <property name="prefix" value="/WEB-INF/view/" />
         <!-- 后缀 -->
         <property name="suffix" value=".jsp" />
+    </bean>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--一设置请求编码格式，必须与 JSP 中的 pageEncoding 属性一致，默认为 IS0-8859-1-->
+        <property name="defaultEncoding" value="UTF-8" ></property>
+        <!--设置允许上传文件的最大值 (10m) ，单位为字节-->
+        <property name="maxUploadSize" value="10000000" />
     </bean>
 
 </beans>
