@@ -7,36 +7,38 @@
 
 package anlzou.com.controller;
 
-import anlzou.com.entity.UserLi;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Controller
-@RequestMapping("/users")
 public class UsersController {
-    /*跳转到显示用户列表的页面*/
-    @RequestMapping("userList")
-    public String userList(Integer[] usersId){
-        return "users";
-    }
-    /*显示要删除用户的信息*/
-    @RequestMapping("deleteUser")
-    public String deleteUser(Integer[] usersId){
-        for(int i=0;i<usersId.length;i++){
-            System.out.println("delete userName=userName"+usersId[i]);
-        }
-        return "users";
+    @RequestMapping("/reg")
+    public String selectUser(){
+        return "regusers";
     }
 
-    /*显示所有用户信息的页面*/
-    @RequestMapping("usersList")
-    public String usersList(){
-        return "userslist";
+    @RequestMapping("/ulist")
+    public String ulist(){
+        return "userlist";
     }
-    /*接收用户信息*/
-    @RequestMapping("getUserInfo")
-    public String getUserInfo(UserLi usersLi){
-        System.out.println(usersLi.getUsersList());  /*记得重写一下Users实体类的toString()方法*/
-        return "userslist";
+
+    @RequestMapping("/ulogin")
+    public String ulogin(){
+        return "userlogin";
+    }
+
+    @RequestMapping("/getuserdata")
+    @ResponseBody
+    public void getuserdata(HttpServletResponse response) throws IOException {
+        response.getWriter().println("{\"total\":28,\"rows\":[");
+        response.getWriter().println("\"id\":1,\"name\":\"lisi1\",\"pass:\"lisi\"},");
+        response.getWriter().println("\"id\":2,\"name\":\"lisi2\",\"pass:\"lisi\"},");
+        response.getWriter().println("\"id\":3,\"name\":\"lisi3\",\"pass:\"lisi\"},");
+        response.getWriter().println("\"id\":4,\"name\":\"lisi4\",\"pass:\"lisi\"}");
+        response.getWriter().println("]}");
     }
 }

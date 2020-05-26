@@ -18,6 +18,9 @@
 
     <!-- 支持mvc注解驱动 -->
     <mvc:annotation-driven />
+    <!-- 配置静态文件过滤器 -->
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/js/" mapping="/js/**"/>
 
     <!-- 视图解析器 -->
     <bean
