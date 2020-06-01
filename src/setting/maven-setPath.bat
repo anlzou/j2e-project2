@@ -4,7 +4,7 @@ chcp 65001
 set add_path = ""
 
 echo Maven环境变量设置
-set maven_home=F:\anlzou-do-not-delete\apache-maven-3.6.3
+set maven_home=E:\anlzou-do-not-delete\apache-maven-3.6.3
 setx Maven_HOME "%maven_home%" /M
 set add_path=%add_path%;%maven_home%\bin
 
