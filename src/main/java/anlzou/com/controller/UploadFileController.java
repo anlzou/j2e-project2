@@ -37,7 +37,7 @@ public class UploadFileController {
         String path=request.getServletContext().getRealPath("/upload/");
         File filePath=new File(path);
         /*判断保存上传文件的目录是否存在，若没有存在则进行创建*/
-        if(filePath.exists()){
+        if(!filePath.exists()){
             filePath.mkdirs();
         }
         try {
